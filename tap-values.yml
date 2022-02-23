@@ -1,0 +1,35 @@
+profile: full
+ceip_policy_disclosed: true
+
+# https://docs.vmware.com/en/Tanzu-Application-Platform/1.0/tap/GUID-tanzu-build-service-install-tbs.html#install-tanzu-build-service-by-using-the-tanzu-cli-1
+buildservice:
+  kp_default_repository: dev.local:5000/build-service
+  kp_default_repository_username: user
+  kp_default_repository_password: password
+  tanzunet_username: <replace with username>
+  tanzunet_password: <replace with password>
+  enable_automatic_dependency_updates: true
+
+supply_chain: basic
+
+cnrs:
+  domain_name: local.cernerpinzon.com
+  provider: local
+
+ootb_supply_chain_basic:
+  registry:
+    server: dev.local:5000
+    repository: supply-chain
+  gitops:
+    ssh_secret: ""
+
+metadata_store: 
+  app_service_type: NodePort
+
+excluded_packages:
+- tap-gui.tanzu.vmware.com
+- accelerator.apps.tanzu.vmware.com
+- build.appliveview.tanzu.vmware.com
+- run.appliveview.tanzu.vmware.com
+- learningcenter.tanzu.vmware.com
+- workshops.learningcenter.tanzu.vmware.com
