@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=${KIND_VERSION:-v1.21.9}
+version=${KIND_VERSION:-v1.21.2}
 clusters=$(kind get clusters)
 reg_name='dev.local'
 reg_port='5000'
