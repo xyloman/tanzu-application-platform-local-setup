@@ -16,4 +16,3 @@ kubectl config use-context kind-${kind_cluster_name}
 ./tanzu-application-platform.sh ${tanzu_net_user} ${tanzu_net_pass}
 ./developer-namespace.sh
 ./tanzu-application-service-adapter.sh ${tanzu_net_user} ${tanzu_net_pass}
-./tanzu-application-service-orgs.sh
