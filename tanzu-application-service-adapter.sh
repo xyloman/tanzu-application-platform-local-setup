@@ -36,6 +36,7 @@ openssl req -x509 -newkey rsa:4096 \
   -addext "subjectAltName = DNS:*.apps.${tas_domain}" \
   -days 365
 
+cp tas-adapter-values-template.yml tas-adapter-values.yml
 yq w -i tas-adapter-values.yml 'api_ingress.fqdn' "api.sys.${tas_domain}"
 yq w -i tas-adapter-values.yml 'api_ingress.tls.crt' -- "$(cat tas-tls-api.crt)"
 yq w -i tas-adapter-values.yml 'api_ingress.tls.key' -- "$(cat tas-tls-api.key)"
@@ -50,5 +51,7 @@ tanzu package installed update tas-adapter \
   --values-file tas-adapter-values.yml \
   --namespace tas-adapter-install \
   --install
+
+rm tas-adapter-values.yml
 
 tanzu package installed list --namespace tas-adapter-install
