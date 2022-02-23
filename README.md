@@ -93,8 +93,9 @@ Reference: https://docs.vmware.com/en/Application-Service-Adapter-for-VMware-Tan
 Linux:
 ```bash
 ./tanzu-application-service-adapter.sh <tanzu_net_user> <tanzu_net_password>
-./tanzu-application-service-orgs.sh
 ```
+
+Run the script `./tanzu-application-service-orgs.sh` to create the necessary org and space for local development with `cf push`
 
 ### Install All
 

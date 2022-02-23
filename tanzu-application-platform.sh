@@ -23,11 +23,17 @@ tanzu package repository add tanzu-tap-repository \
 
 tanzu package available list --namespace tap-install
 
+cp tap-values-template.yml tap-values.yml
+yq w -i tap-values.yml 'buildservice.tanzunet_username' "${tanzu_net_user}"
+yq w -i tap-values.yml 'buildservice.tanzunet_password' "${tanzu_net_pass}"
+
 tanzu package installed update tap \
   --package-name tap.tanzu.vmware.com \
   --version ${version} \
   --values-file tap-values.yml \
   --namespace tap-install \
   --install
+
+rm tap-values.yml
 
 tanzu package installed list --namespace tap-install

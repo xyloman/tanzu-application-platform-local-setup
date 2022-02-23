@@ -1,2 +1,4 @@
 *.crt
 *.key
+tas-adapter-values.yml
+tap-values.yml
