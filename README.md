@@ -2,7 +2,7 @@
 
 ## Setup Kind
 
-There are a few options for creating using the kind [local registry enabled](https://kind.sigs.k8s.io/docs/user/local-registry/) or David Syers [example kind-setup](https://github.com/dsyer/kpack-with-kind/blob/main/kind-setup.sh).  A copy of Davids is included in this repository under file kind-setup.sh.
+There are a few options for creating using the kind [local registry enabled](https://kind.sigs.k8s.io/docs/user/local-registry/) or David Syers's [example kind-setup](https://github.com/dsyer/kpack-with-kind/blob/main/kind-setup.sh).  A copy of David's is included in this repository under file kind-setup.sh.
 
 ```bash
 ./kind-setup.sh
@@ -30,7 +30,7 @@ Setting up kubeconfig
 configmap/local-registry-hosting created
 ```
 
-This will create a kind cluster with a local registry with name `registry.local`.  This setup will allow Tanzu Application Platform running on kind to build images with Tanzu Build Service and publish them to `registry.local`.  Deployments running on the cluster will alow be able to resolve the built images.
+This will create a kind cluster with a local registry with name `registry.local`.  This setup will allow Tanzu Application Platform running on kind to build images with Tanzu Build Service and publish them to `registry.local`.  Deployments running on the cluster will now be able to resolve the built images.
 
 ### Registry Host for local development
 
