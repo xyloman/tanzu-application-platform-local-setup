@@ -2,3 +2,4 @@
 *.key
 tas-adapter-values.yml
 tap-values.yml
+tap-packages-*.tar.gz

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-version=${TANZU_APPLICATION_PLATFORM_VERSION:-1.0.1}
+version=${TANZU_APPLICATION_PLATFORM_VERSION:-1.1.0}
 glob=tanzu-framework-linux-amd64.tar
 
-# Based on: https://docs.vmware.com/en/Tanzu-Application-Platform/1.0/tap/GUID-install-general.html#update-prev-tap-tanzu-cli
+# Based on: https://docs.vmware.com/en/Tanzu-Application-Platform/1.1/tap/GUID-install-tanzu-cli.html
 
 rm -rf /tmp/tanzu-cli           # Remove previously downloaded cli files
 rm ~/scripts/tanzu              # Remove CLI binary (executable)

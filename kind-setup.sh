@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=${KIND_VERSION:-v1.21.2}
+version=${KIND_VERSION:-v1.23.4}
 clusters=$(kind get clusters)
 reg_name='dev.local'
 reg_port='5000'
@@ -13,8 +13,10 @@ function start_registry() {
 	running=$(docker inspect -f '{{.State.Running}}' "${reg_name}" 2>/dev/null || true)
 	if [ "${running}" != 'true' ]; then
 		docker run \
-			   -d --restart=always -p "${reg_port}:5000" --name "${reg_name}" \
-			   registry:2
+          #disable registry validation because some non-distributable images will fail when tanzu-relocate-images is executed
+          --env REGISTRY_VALIDATION_DISABLED=true \
+          -d --restart=always -p "${reg_port}:5000" --name "${reg_name}" \
+          registry:2
 	fi
 }
 
