@@ -1,4 +1,4 @@
-profile: full
+profile: iterate
 ceip_policy_disclosed: true
 
 # https://docs.vmware.com/en/Tanzu-Application-Platform/1.0/tap/GUID-tanzu-build-service-install-tbs.html#install-tanzu-build-service-by-using-the-tanzu-cli-1
@@ -13,7 +13,7 @@ buildservice:
 supply_chain: basic
 
 cnrs:
-  domain_name: local.cernerpinzon.com
+  domain_name: 127-0-0-1.sslip.io
   provider: local
 
 ootb_supply_chain_basic:
@@ -26,10 +26,8 @@ ootb_supply_chain_basic:
 metadata_store: 
   app_service_type: NodePort
 
-excluded_packages:
-- tap-gui.tanzu.vmware.com
-- accelerator.apps.tanzu.vmware.com
-- build.appliveview.tanzu.vmware.com
-- run.appliveview.tanzu.vmware.com
-- learningcenter.tanzu.vmware.com
-- workshops.learningcenter.tanzu.vmware.com
+grype:
+  namespace: default
+  targetImagePullSecret: registry-credentials
+
+excluded_packages: []
