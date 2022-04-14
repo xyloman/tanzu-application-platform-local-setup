@@ -2,11 +2,11 @@
 
 tanzu_net_user=$1
 tanzu_net_pass=$2
-version=${TAP_VERSION:-1.0.1}
+version=${TAP_VERSION:-1.1.0}
 
-export INSTALL_REGISTRY_USERNAME=${tanzu_net_user}
-export INSTALL_REGISTRY_PASSWORD=${tanzu_net_pass}
-export INSTALL_REGISTRY_HOSTNAME=registry.tanzu.vmware.com
+export INSTALL_REGISTRY_USERNAME=user
+export INSTALL_REGISTRY_PASSWORD=password
+export INSTALL_REGISTRY_HOSTNAME=dev.local:5000
 
 kubectl create namespace tap-install
 tanzu secret registry add tap-registry \
@@ -17,8 +17,16 @@ tanzu secret registry add tap-registry \
   --namespace tap-install \
   --yes
 
+tanzu secret registry add tanzunet-registry \
+  --username ${tanzu_net_user} \
+  --password ${tanzu_net_pass} \
+  --server registry.tanzu.vmware.com \
+  --export-to-all-namespaces \
+  --namespace tap-install \
+  --yes
+
 tanzu package repository add tanzu-tap-repository \
-  --url registry.tanzu.vmware.com/tanzu-application-platform/tap-packages:$version \
+  --url ${INSTALL_REGISTRY_HOSTNAME}/tanzu-application-platform/tap-packages:$version \
   --namespace tap-install
 
 tanzu package available list --namespace tap-install
